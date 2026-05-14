@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/auth-middleware'
 import { rateLimit } from '@/lib/rate-limit'
-
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
-const ANTHROPIC_BASE_URL = process.env.ANTHROPIC_BASE_URL || 'https://api.z.ai/api/anthropic'
-const MODEL = process.env.AI_MODEL || 'claude-opus-4-6-20250514'
+import { callAI } from '@/lib/ai'
 
 const SYSTEM_PROMPT = `Tu es l'IA Co-Pilote de CréaScope, un assistant intelligent intégré à une plateforme de diagnostic entrepreneurial. Tu aides les conseillers et les porteurs de projet dans leur parcours de création d'entreprise.
 
@@ -31,14 +28,6 @@ export async function POST(request: NextRequest) {
   const auth = authenticateRequest(request)
   if (!auth.authenticated || !auth.payload) {
     return auth.error!
-  }
-
-  if (!ANTHROPIC_API_KEY) {
-    console.error('ANTHROPIC_API_KEY environment variable is not set')
-    return NextResponse.json(
-      { error: 'Service IA non configuré' },
-      { status: 503 }
-    )
   }
 
   try {
@@ -72,48 +61,25 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Call Anthropic API
-    const response = await fetch(`${ANTHROPIC_BASE_URL}/v1/messages`, {
-      method: 'POST',
-      headers: {
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 4096,
-        system: systemMessage,
-        messages: messages.slice(-20).map((m: { role: string; content: string }) => ({
-          role: m.role === 'assistant' ? 'assistant' : 'user',
-          content: typeof m.content === 'string' && m.content.length <= 5000
-            ? m.content
-            : String(m.content).slice(0, 5000),
-        })),
-      }),
-    })
-
-    if (!response.ok) {
-      const error = await response.text()
-      console.error('Anthropic API error:', error)
-      return NextResponse.json(
-        { error: "Erreur lors de la communication avec l'IA" },
-        { status: 502 }
-      )
-    }
-
-    const data = await response.json()
-
-    // Extract text from response
-    const text = data.content
-      ?.filter((block: { type: string }) => block.type === 'text')
-      .map((block: { text: string }) => block.text)
-      .join('') || 'Pas de réponse'
+    // Call AI via z-ai-web-dev-sdk with GLM 4.7
+    const response = await callAI(
+      messages.slice(-20).map((m: { role: string; content: string }) => ({
+        role: m.role === 'assistant' ? 'assistant' : 'user',
+        content: typeof m.content === 'string' && m.content.length <= 5000
+          ? m.content
+          : String(m.content).slice(0, 5000),
+      })),
+      {
+        systemPrompt: systemMessage,
+        maxTokens: 4096,
+        temperature: 0.7,
+      }
+    )
 
     return NextResponse.json({
-      content: text,
-      model: MODEL,
-      usage: data.usage,
+      content: response,
+      model: 'glm-4.7',
+      usage: { model: 'glm-4.7', provider: 'z.ai' },
     })
   } catch (error) {
     console.error('AI chat error:', error)

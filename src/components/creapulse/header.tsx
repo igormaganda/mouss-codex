@@ -116,9 +116,7 @@ export default function Header() {
                   {/* Header */}
                   <div className="flex items-center justify-between px-4 h-16 border-b border-gray-100 shrink-0">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
-                        <Zap className="w-4 h-4 text-white" />
-                      </div>
+                      <img src="/logo-gidef.svg" alt="GIDEF" className="h-8 w-auto" />
                       <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">CréaScope</span>
                     </div>
                     <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} className="h-8 w-8">

@@ -178,9 +178,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" />
-              </div>
+              <img src="/logo-gidef.svg" alt="GIDEF" className="h-8 w-auto" />
               <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 CréaScope
               </span>
@@ -526,9 +524,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" />
-              </div>
+              <img src="/logo-gidef.svg" alt="GIDEF" className="h-8 w-auto" />
               <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 CréaScope
               </span>
