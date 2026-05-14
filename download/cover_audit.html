@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: 794px 1123px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 794px; height: 1123px; overflow: hidden; background: #ffffff; font-family: 'Inter', sans-serif; }
+  .cover { position: relative; width: 794px; height: 1123px; background: #ffffff; }
+  
+  /* Decorative elements */
+  .accent-bar { position: absolute; top: 0; left: 0; width: 8px; height: 100%; background: #26728b; }
+  .circle-1 { position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; border-radius: 50%; background: rgba(38, 114, 139, 0.06); }
+  .circle-2 { position: absolute; bottom: -40px; right: 120px; width: 180px; height: 180px; border-radius: 50%; background: rgba(38, 114, 139, 0.04); }
+  .line-h { position: absolute; top: 280px; left: 60px; width: 200px; height: 2px; background: #26728b; opacity: 0.3; }
+  .line-h2 { position: absolute; top: 284px; left: 60px; width: 120px; height: 2px; background: #26728b; opacity: 0.15; }
+  
+  /* Content */
+  .kicker { position: absolute; top: 120px; left: 60px; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #26728b; opacity: 0.7; }
+  .title { position: absolute; top: 155px; left: 60px; width: 520px; font-size: 42px; font-weight: 800; line-height: 1.15; color: #191b1c; }
+  .title span { color: #26728b; }
+  .subtitle { position: absolute; top: 310px; left: 60px; width: 450px; font-size: 15px; line-height: 1.7; color: #838a8f; font-weight: 400; }
+  
+  .meta { position: absolute; bottom: 80px; left: 60px; }
+  .meta-line { font-size: 11px; color: #838a8f; margin-bottom: 6px; }
+  .meta-line strong { color: #191b1c; font-weight: 600; }
+  
+  .badge-row { position: absolute; top: 120px; right: 60px; display: flex; gap: 8px; }
+  .badge { padding: 6px 14px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; }
+  .badge-red { background: #fde8e8; color: #c0392b; border: 1px solid #f5c6cb; }
+  .badge-orange { background: #fef3e2; color: #d35400; border: 1px solid #f5cba7; }
+  .badge-blue { background: #e8f4fd; color: #2471a3; border: 1px solid #aed6f1; }
+  
+  .stats-row { position: absolute; bottom: 80px; right: 60px; text-align: right; }
+  .stat-num { font-size: 36px; font-weight: 800; color: #26728b; line-height: 1; }
+  .stat-label { font-size: 10px; color: #838a8f; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="accent-bar"></div>
+  <div class="circle-1"></div>
+  <div class="circle-2"></div>
+  <div class="line-h"></div>
+  <div class="line-h2"></div>
+  
+  <div class="kicker">Audit Technique</div>
+  
+  <div class="badge-row">
+    <div class="badge badge-red">3 CRITIQUES</div>
+    <div class="badge badge-orange">2 ELEVEES</div>
+    <div class="badge badge-blue">4 MOYENNES</div>
+  </div>
+  
+  <div class="title">CreaPulse<br><span>Ameliorations &amp;<br>Securite</span></div>
+  
+  <div class="subtitle">
+    Audit complet de la plateforme SaaS de diagnostic entrepreneurial. 
+    Analyse des fonctionnalites, identification des vulnerabilites 
+    et plan d'action priorise en 3 phases.
+  </div>
+  
+  <div class="meta">
+    <div class="meta-line"><strong>Plateforme :</strong> CreaPulse v0.2.0</div>
+    <div class="meta-line"><strong>Stack :</strong> Next.js 16 + React 19 + Prisma + PostgreSQL</div>
+    <div class="meta-line"><strong>Date :</strong> Mai 2026</div>
+    <div class="meta-line"><strong>Classification :</strong> Confidentiel</div>
+  </div>
+  
+  <div class="stats-row">
+    <div class="stat-num">9</div>
+    <div class="stat-label">Vulnerabilites identifiees</div>
+  </div>
+</div>
+</body>
+</html>
