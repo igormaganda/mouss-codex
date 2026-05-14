@@ -45,6 +45,7 @@ import {
   Trophy,
 } from 'lucide-react'
 import { useAppStore } from '@/hooks/use-store'
+import { authHeaders } from '@/lib/token'
 
 /* ------------------------------------------------------------------ */
 /*  TYPES                                                              */
@@ -421,7 +422,7 @@ export default function ParcoursCreateur() {
     }
     const fetchSession = async () => {
       try {
-        const res = await fetch('/api/parcours-creteur/session')
+        const res = await fetch('/api/parcours-creteur/session', { headers: authHeaders() })
         if (!res.ok) return
         const data = await res.json()
         const sess = data.session
@@ -465,7 +466,7 @@ export default function ParcoursCreateur() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const res = await fetch('/api/parcours-creteur/radar')
+        const res = await fetch('/api/parcours-creteur/radar', { headers: authHeaders() })
         if (!res.ok) return
         const data = await res.json()
         if (data.results && data.results.length > 0) {
@@ -506,6 +507,7 @@ export default function ParcoursCreateur() {
     async (patch: { currentStep?: number; visionAnswers?: Record<string, string> }) => {
       try {
         await fetch('/api/parcours-creteur/session', {
+          headers: authHeaders(),
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(patch),
@@ -542,7 +544,12 @@ export default function ParcoursCreateur() {
         formData.append('file', file)
         setUploadProgress(30)
 
-        const res = await fetch('/api/upload/cv', { method: 'POST', body: formData })
+        const token = localStorage.getItem('cp_token')
+        const res = await fetch('/api/upload/cv', {
+          method: 'POST',
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+          body: formData,
+        })
         setUploadProgress(70)
 
         if (!res.ok) {
@@ -555,7 +562,7 @@ export default function ParcoursCreateur() {
         setUploadProgress(90)
 
         // Fetch updated CV data
-        const cvRes = await fetch(`/api/upload/cv?userId=${userId}`)
+        const cvRes = await fetch(`/api/upload/cv?userId=${userId}`, { headers: authHeaders() })
         if (cvRes.ok) {
           const cvInfo = await cvRes.json()
           setCvData({ fileName: cvInfo.fileName, parsedSkills: cvInfo.parsedSkills })
@@ -590,11 +597,11 @@ export default function ParcoursCreateur() {
     try {
       const res = await fetch('/api/upload/cv', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify({ manualText: manualCv }),
       })
       if (res.ok) {
-        const cvRes = await fetch(`/api/upload/cv?userId=${userId}`)
+        const cvRes = await fetch(`/api/upload/cv?userId=${userId}`, { headers: authHeaders() })
         if (cvRes.ok) {
           const cvInfo = await cvRes.json()
           setCvData({ fileName: 'CV manuel', parsedSkills: cvInfo.parsedSkills })
@@ -638,6 +645,7 @@ export default function ParcoursCreateur() {
     setVisionLoading(true)
     try {
       const res = await fetch('/api/parcours-creteur/vision', {
+        headers: authHeaders(),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers: visionAnswers }),
@@ -667,6 +675,7 @@ export default function ParcoursCreateur() {
     setAiSuggestion(null)
     try {
       const res = await fetch('/api/parcours-creteur/vision', {
+        headers: authHeaders(),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers: { [currentQ.key]: currentAnswer } }),
@@ -705,6 +714,7 @@ export default function ParcoursCreateur() {
 
       try {
         await fetch('/api/parcours-creteur/radar', {
+          headers: authHeaders(),
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ skillId: currentCard.id, kept }),
@@ -737,7 +747,7 @@ export default function ParcoursCreateur() {
 
   const fetchKiviatData = useCallback(async () => {
     try {
-      const res = await fetch('/api/parcours-creteur/kiviat')
+      const res = await fetch('/api/parcours-creteur/kiviat', { headers: authHeaders() })
       if (res.ok) {
         const data = await res.json()
         setKiviatAcquis(data.acquis || [])
@@ -758,7 +768,10 @@ export default function ParcoursCreateur() {
     if (!userId) return
     setBilanLoading(true)
     try {
-      const res = await fetch('/api/parcours-creteur/bilan', { method: 'POST' })
+      const res = await fetch('/api/parcours-creteur/bilan', {
+        method: 'POST',
+        headers: authHeaders(),
+      })
       if (res.ok) {
         const data = await res.json()
         setBilan(data.bilan)

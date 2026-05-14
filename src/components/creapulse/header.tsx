@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAppStore, type UserRole } from '@/hooks/use-store'
+import { authHeaders } from '@/lib/token'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useCurrentTabLabel, roleConfig } from './sidebar'
 import SessionTimerGauge from './session-timer-gauge'
@@ -71,7 +72,7 @@ export default function Header() {
 
     const fetchNotifications = async () => {
       try {
-        const res = await fetch(`/api/notifications?userId=${userId}`)
+        const res = await fetch(`/api/notifications?userId=${userId}`, { headers: authHeaders() })
         if (!res.ok) throw new Error('Failed to fetch notifications')
         const data = await res.json()
 

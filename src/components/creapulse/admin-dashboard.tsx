@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { useAppStore } from '@/hooks/use-store'
+import { authHeaders } from '@/lib/token'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
@@ -91,7 +92,7 @@ function VueEnsembleTab() {
     let cancelled = false
     async function fetchStats() {
       try {
-        const res = await fetch('/api/dashboard/stats')
+        const res = await fetch('/api/dashboard/stats', { headers: authHeaders() })
         if (!res.ok) throw new Error(`Erreur ${res.status}`)
         const json = await res.json()
         if (!cancelled) setData(json)
@@ -209,7 +210,7 @@ function GestionModulaireTab() {
 
   const fetchModules = useCallback(async () => {
     try {
-      const res = await fetch('/api/admin/modules')
+      const res = await fetch('/api/admin/modules', { headers: authHeaders() })
       if (!res.ok) throw new Error(`Erreur ${res.status}`)
       const json = await res.json()
       setModules(json.modules || json || [])
@@ -230,7 +231,7 @@ function GestionModulaireTab() {
     try {
       const res = await fetch('/api/admin/modules', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify({ id, enabled: newEnabled }),
       })
       if (!res.ok) throw new Error(`Erreur ${res.status}`)
@@ -312,7 +313,7 @@ function MonitoringTab() {
     let cancelled = false
     async function fetchTerritories() {
       try {
-        const res = await fetch('/api/dashboard/stats')
+        const res = await fetch('/api/dashboard/stats', { headers: authHeaders() })
         if (!res.ok) throw new Error(`Erreur ${res.status}`)
         const json = await res.json()
         if (!cancelled) {
@@ -402,7 +403,7 @@ function HandicapTab() {
     let cancelled = false
     async function fetchAlerts() {
       try {
-        const res = await fetch('/api/admin/accessibility-alerts')
+        const res = await fetch('/api/admin/accessibility-alerts', { headers: authHeaders() })
         if (!res.ok) throw new Error(`Erreur ${res.status}`)
         const json = await res.json()
         if (!cancelled) {
@@ -505,7 +506,7 @@ function PartenariatsTab() {
     let cancelled = false
     async function fetchPartners() {
       try {
-        const res = await fetch('/api/admin/partners')
+        const res = await fetch('/api/admin/partners', { headers: authHeaders() })
         if (!res.ok) throw new Error(`Erreur ${res.status}`)
         const json = await res.json()
         if (!cancelled) {
@@ -614,7 +615,7 @@ function IndicateursTab() {
     let cancelled = false
     async function fetchStats() {
       try {
-        const res = await fetch('/api/dashboard/stats')
+        const res = await fetch('/api/dashboard/stats', { headers: authHeaders() })
         if (!res.ok) throw new Error(`Erreur ${res.status}`)
         const json = await res.json()
         if (!cancelled) setData(json)

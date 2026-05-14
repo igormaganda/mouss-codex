@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAppStore } from '@/hooks/use-store'
+import { authHeaders } from '@/lib/token'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 import { Progress } from '@/components/ui/progress'
@@ -73,9 +74,9 @@ function Skeleton({ className }: { className?: string }) {
 }
 
 // Helper to safely fetch JSON
-async function fetchJson<T>(url: string, fallback: T | null): Promise<T | null> {
+async function fetchJson<T>(url: string, fallback: T | null, options?: RequestInit): Promise<T | null> {
   try {
-    const res = await fetch(url)
+    const res = await fetch(url, { ...options, headers: authHeaders() })
     if (!res.ok) return fallback
     return await res.json()
   } catch {
