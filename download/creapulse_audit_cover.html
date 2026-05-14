@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 794px; height: 1123px; background: #f7f7f6; font-family: 'DM Sans', sans-serif; }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; }
+      body { transform-origin: top center; scale: min(1, calc(100vh / 1123)); margin: 0 auto; }
+    }
+
+    .cover {
+      position: relative;
+      width: 794px;
+      height: 1123px;
+      background: #f7f7f6;
+      overflow: hidden;
+    }
+
+    /* Layer 0: Background fill */
+    .bg-fill {
+      position: absolute;
+      inset: 0;
+      background: #f7f7f6;
+      z-index: 0;
+    }
+
+    /* Layer 1: Decorative (clipped) */
+    .accent-line-right {
+      position: absolute;
+      top: 8%;
+      right: 0;
+      width: 3px;
+      height: 38%;
+      background: linear-gradient(180deg, transparent, #5431bd 30%, #5431bd 70%, transparent);
+      z-index: 1;
+    }
+    .accent-line-left {
+      position: absolute;
+      top: 0;
+      left: 14%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 5%, #d0cdc3 20%, #d0cdc3 80%, transparent 95%);
+      z-index: 1;
+    }
+    .dot-cluster {
+      position: absolute;
+      bottom: 12%;
+      right: 8%;
+      width: 80px;
+      height: 80px;
+      z-index: 1;
+    }
+    .dot-cluster span {
+      position: absolute;
+      border-radius: 50%;
+      background: #a89354;
+      opacity: 0.15;
+    }
+    .dot-cluster span:nth-child(1) { width: 8px; height: 8px; top: 0; left: 20px; }
+    .dot-cluster span:nth-child(2) { width: 12px; height: 12px; top: 25px; left: 50px; }
+    .dot-cluster span:nth-child(3) { width: 6px; height: 6px; top: 50px; left: 10px; }
+    .dot-cluster span:nth-child(4) { width: 10px; height: 10px; top: 55px; left: 60px; }
+    .dot-cluster span:nth-child(5) { width: 5px; height: 5px; top: 70px; left: 35px; }
+
+    .watermark {
+      position: absolute;
+      bottom: 4%;
+      left: 5%;
+      font-family: 'DM Serif Display', serif;
+      font-size: 120px;
+      color: #272623;
+      opacity: 0.03;
+      letter-spacing: -4px;
+      z-index: 1;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* Layer 2: Structural lines */
+    .divider-thin {
+      position: absolute;
+      top: 58%;
+      left: 14%;
+      width: 60%;
+      height: 1px;
+      background: #d0cdc3;
+      z-index: 2;
+    }
+
+    /* Layer 3: Text content */
+    .kicker {
+      position: absolute;
+      top: 18%;
+      left: 14%;
+      font-size: 11pt;
+      font-weight: 500;
+      letter-spacing: 3pt;
+      text-transform: uppercase;
+      color: #a89354;
+      opacity: 0.8;
+      z-index: 3;
+    }
+
+    .hero-title {
+      position: absolute;
+      top: 24%;
+      left: 14%;
+      width: 65%;
+      font-family: 'DM Serif Display', serif;
+      font-size: 46pt;
+      line-height: 1.15;
+      color: #272623;
+      z-index: 3;
+      letter-spacing: -0.5px;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: #5431bd;
+    }
+
+    .summary-block {
+      position: absolute;
+      top: 47%;
+      left: 14%;
+      width: 58%;
+      font-size: 11pt;
+      line-height: 1.7;
+      color: #7e7c74;
+      z-index: 3;
+    }
+
+    .meta-section {
+      position: absolute;
+      top: 62%;
+      left: 14%;
+      z-index: 3;
+    }
+    .meta-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .meta-label {
+      font-size: 9pt;
+      font-weight: 500;
+      letter-spacing: 1.5pt;
+      text-transform: uppercase;
+      color: #a89354;
+      min-width: 100px;
+    }
+    .meta-value {
+      font-size: 11pt;
+      color: #272623;
+      font-weight: 400;
+    }
+
+    .footer-badge {
+      position: absolute;
+      bottom: 5%;
+      left: 14%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 3;
+    }
+    .footer-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #5431bd;
+    }
+    .footer-badge span {
+      font-size: 8pt;
+      letter-spacing: 2pt;
+      text-transform: uppercase;
+      color: #7e7c74;
+    }
+
+    .stat-grid {
+      position: absolute;
+      top: 76%;
+      left: 14%;
+      display: flex;
+      gap: 40px;
+      z-index: 3;
+    }
+    .stat-item {
+      text-align: left;
+    }
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28pt;
+      color: #5431bd;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 8pt;
+      letter-spacing: 1pt;
+      text-transform: uppercase;
+      color: #7e7c74;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="bg-fill"></div>
+
+    <div class="accent-line-right"></div>
+    <div class="accent-line-left"></div>
+    <div class="dot-cluster">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="watermark">CreaPulse</div>
+
+    <div class="divider-thin"></div>
+
+    <div class="kicker">Audit &amp; Recommandations</div>
+
+    <div class="hero-title">
+      Analyse UX, Ergonomie<br>
+      et Qualit&eacute; du Code<br>
+      <em>CreaPulse</em>
+    </div>
+
+    <div class="summary-block">
+      Audit complet de la plateforme SaaS d'accompagnement entrepreneurial&nbsp;: parcours utilisateur, navigation, accessibilit&eacute;, s&eacute;curit&eacute; API, qualit&eacute; du code et recommandations prioris&eacute;es pour optimiser la satisfaction des porteurs de projet.
+    </div>
+
+    <div class="meta-section">
+      <div class="meta-row">
+        <span class="meta-label">Plateforme</span>
+        <span class="meta-value">CreaPulse v2.0</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Technologie</span>
+        <span class="meta-value">Next.js 16 / React 19 / Prisma / PostgreSQL</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Date</span>
+        <span class="meta-value">11 mai 2026</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Classification</span>
+        <span class="meta-value">Interne</span>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-number">55</div>
+        <div class="stat-label">Routes API</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">33</div>
+        <div class="stat-label">Composants</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Modeles DB</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">42</div>
+        <div class="stat-label">Primitives UI</div>
+      </div>
+    </div>
+
+    <div class="footer-badge">
+      <div class="dot"></div>
+      <span>Rapport confidentiel</span>
+    </div>
+  </div>
+</body>
+</html>

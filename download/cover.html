@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cahier des Charges - CréaPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: 794px 1123px; margin: 0; }
+  html, body {
+    width: 794px;
+    height: 1123px;
+    margin: 0;
+    padding: 0;
+    background: #6d6345;
+    font-family: 'Inter', sans-serif;
+  }
+  .cover-page {
+    position: relative;
+    width: 794px;
+    height: 1123px;
+    background: #ffffff;
+    overflow: hidden;
+  }
+  /* Layer 0 - Base */
+  .cover-bg {
+    position: absolute;
+    inset: 0;
+    background: #ffffff;
+  }
+  /* Layer 1 - Background: Solid Sidebar */
+  .sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 1123px;
+    background: #6d6345;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .sidebar-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    font-size: 160px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.12);
+    white-space: nowrap;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+  }
+  /* Layer 2 - Structure */
+  .bottom-line {
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+    right: 79px;
+    height: 1px;
+    background: rgba(109,99,69,0.25);
+    z-index: 2;
+  }
+  /* Layer 3 - Content */
+  .content {
+    position: absolute;
+    left: 120px;
+    right: 79px;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .kicker {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(109,99,69,0.55);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.12;
+    color: #1a1918;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+  .hero-title span {
+    color: #542dca;
+  }
+  .summary {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,25,24,0.65);
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+  .meta {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: rgba(26,25,24,0.75);
+  }
+  .meta strong {
+    font-weight: 600;
+    color: #1a1918;
+  }
+  /* Footer */
+  .footer-row {
+    position: absolute;
+    bottom: 100px;
+    left: 120px;
+    right: 79px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+  }
+  .footer-left {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(109,99,69,0.5);
+  }
+  .footer-right {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(109,99,69,0.5);
+  }
+</style>
+</head>
+<body>
+<div class="cover-page">
+  <div class="cover-bg"></div>
+  <div class="sidebar">
+    <div class="sidebar-watermark">CPL</div>
+  </div>
+  <div class="bottom-line"></div>
+  <div class="content">
+    <div class="kicker">Cahier des Charges</div>
+    <div class="hero-title">Plateforme SaaS<br><span>CréaPulse</span></div>
+    <div class="summary">
+      Solution modulaire de diagnostic entrepreneurial augmentée par l'IA, conçue pour transformer l'orientation professionnelle en expérience technologique inclusive et accessible.
+    </div>
+    <div class="meta">
+      <strong>Porteur :</strong> France Travail / Pilotes Territoriaux<br>
+      <strong>Version :</strong> 1.0<br>
+      <strong>Date :</strong> Mai 2026
+    </div>
+  </div>
+  <div class="footer-row">
+    <div class="footer-left">Document confidentiel</div>
+    <div class="footer-right">Spécifications Fonctionnelles</div>
+  </div>
+</div>
+</body>
+</html>
