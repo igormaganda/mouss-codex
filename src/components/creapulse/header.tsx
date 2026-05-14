@@ -117,7 +117,7 @@ export default function Header() {
                   <div className="flex items-center justify-between px-4 h-16 border-b border-gray-100 shrink-0">
                     <div className="flex items-center gap-2">
                       <img src="/logo-gidef.svg" alt="GIDEF" className="h-8 w-auto" />
-                      <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">CréaScope</span>
+                      <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Echo Entreprendre</span>
                     </div>
                     <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} className="h-8 w-8">
                       <X className="w-4 h-4" />

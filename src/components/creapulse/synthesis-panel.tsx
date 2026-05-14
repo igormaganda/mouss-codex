@@ -75,7 +75,7 @@ function buildRecommendations(d: ReportData): string[] {
   const incompletePhases = d.phases.filter((p) => !p.completed)
   if (incompletePhases.length > 0)
     recs.push(`Poursuivre la complétion de la phase « ${incompletePhases[0].name} »`)
-  recs.push('Rencontrer votre conseiller CréaScope pour valider les résultats et construire votre feuille de route')
+  recs.push('Rencontrer votre conseiller Echo Entreprendre pour valider les résultats et construire votre feuille de route')
   return recs
 }
 
@@ -183,7 +183,7 @@ export default function SynthesisPanel() {
 
         // === Counselor ===
         const counselorUserName = counselorData?.counselor?.user?.name
-        const conseillerName = counselorUserName || 'Conseiller CréaScope'
+        const conseillerName = counselorUserName || 'Conseiller Echo Entreprendre'
 
         const today = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
 
@@ -204,7 +204,7 @@ export default function SynthesisPanel() {
         // On error, set minimal report data
         const today = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
         setReportData({
-          porteur: { nom: userName || 'Porteur de projet', date: today, conseiller: 'Conseiller CréaScope' },
+          porteur: { nom: userName || 'Porteur de projet', date: today, conseiller: 'Conseiller Echo Entreprendre' },
           modules: {
             riasec: { dominant: 'N/A', score: 0, description: 'Données non disponibles' },
             kiviat: { score: 0, details: 'Données non disponibles' },
@@ -255,7 +255,7 @@ Génère la synthèse structurée avec : 1) Profil entrepreneurial, 2) Forces et
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: [{ role: 'user', content: prompt }],
-          context: { userName: 'Conseiller CréaScope', userRole: 'COUNSELOR' },
+          context: { userName: 'Conseiller Echo Entreprendre', userRole: 'COUNSELOR' },
         }),
       })
       const data = await res.json()
@@ -459,7 +459,7 @@ Génère la synthèse structurée avec : 1) Profil entrepreneurial, 2) Forces et
                     Rapport de Diagnostic Entrepreneurial
                   </h2>
                   <p className="text-sm text-gray-500 dark:text-gray-400 print:text-gray-600 mt-1">
-                    Plateforme CréaScope — Diagnostic complet
+                    Plateforme Echo Entreprendre — Diagnostic complet
                   </p>
                 </div>
                 <div className="text-right">
@@ -675,7 +675,7 @@ Génère la synthèse structurée avec : 1) Profil entrepreneurial, 2) Forces et
               {/* Report Footer */}
               <div className="pt-4 border-t border-gray-100 dark:border-gray-800 print:border-gray-300">
                 <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-500 print:text-gray-500">
-                  <span>Rapport généré par CréaScope</span>
+                  <span>Rapport généré par Echo Entreprendre</span>
                   <span>{reportData.porteur.date}</span>
                 </div>
               </div>

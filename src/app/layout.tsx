@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CréaScope — Diagnostiquez votre projet entrepreneurial avec l'IA",
+  title: "Echo Entreprendre — Diagnostiquez votre projet entrepreneurial avec l'IA",
   description:
-    "CréaScope est une plateforme SaaS innovante qui combine intelligence artificielle et accompagnement humain pour diagnostiquer et guider les projets entrepreneuriaux. Accessible, gamifiée et modulaire.",
+    "Echo Entreprendre est une plateforme SaaS innovante qui combine intelligence artificielle et accompagnement humain pour diagnostiquer et guider les projets entrepreneuriaux. Accessible, gamifiée et modulaire.",
   keywords: [
-    "CréaScope",
+    "Echo Entreprendre",
     "entrepreneuriat",
     "diagnostic",
     "IA",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     "accompagnement",
     "startup",
   ],
-  authors: [{ name: "CréaScope" }],
+  authors: [{ name: "Echo Entreprendre" }],
   openGraph: {
-    title: "CréaScope — Diagnostic Entrepreneurial IA",
+    title: "Echo Entreprendre — Diagnostic Entrepreneurial IA",
     description:
       "Diagnostiquez votre projet entrepreneurial avec l'IA. Gamification, accessibilité et accompagnement personnalisé.",
     type: "website",

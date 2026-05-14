@@ -54,7 +54,7 @@ function AICopilotTab() {
   const currentRole = useAppStore((s) => s.currentRole)
   const [inputValue, setInputValue] = useState('')
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'ai', content: "Bonjour ! Je suis l'IA Co-Pilote de CréaScope, propulsée par Claude. Je peux analyser des profils entrepreneuriaux, recommander des formations et vous aider dans vos diagnostics. Comment puis-je vous aider ?", time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) },
+    { role: 'ai', content: "Bonjour ! Je suis l'IA Co-Pilote de Echo Entreprendre, propulsée par Claude. Je peux analyser des profils entrepreneuriaux, recommander des formations et vous aider dans vos diagnostics. Comment puis-je vous aider ?", time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) },
   ])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -70,7 +70,7 @@ function AICopilotTab() {
 
     try {
       const apiMessages = [...messages.filter((m) => !m.loading).map((m) => ({ role: m.role === 'ai' ? 'assistant' : 'user', content: m.content })), { role: 'user', content: userMessage.content }]
-      const res = await fetch('/api/ai/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: apiMessages, context: { userName: userName || 'Conseiller CréaScope', userRole: currentRole.toUpperCase() } }) })
+      const res = await fetch('/api/ai/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: apiMessages, context: { userName: userName || 'Conseiller Echo Entreprendre', userRole: currentRole.toUpperCase() } }) })
       const data = await res.json()
       if (res.ok) {
         setMessages((prev) => prev.map((m, i) => i === prev.length - 1 ? { ...m, content: data.content, loading: false } : m))
@@ -205,7 +205,7 @@ function ChatMarcheTab() {
               if (analysis.synthesis) {
                 items.push({
                   title: 'Synthèse de l\'analyse',
-                  source: 'Analyse IA CréaScope',
+                  source: 'Analyse IA Echo Entreprendre',
                   summary: analysis.synthesis,
                   url: '#',
                   date: new Date().toLocaleDateString('fr-FR'),

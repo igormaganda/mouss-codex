@@ -1548,8 +1548,8 @@ function ExportBPTab() {
   )
 }
 
-// ====================== RAPPORT CRÉASCOPE TAB ======================
-function RapportCreascopeTab() {
+// ====================== RAPPORT ECHO ENTREPRENDRE TAB ======================
+function RapportEchoEntreprendreTab() {
   return (
     <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-6">
       <motion.div variants={fadeIn}>
@@ -1557,14 +1557,14 @@ function RapportCreascopeTab() {
           <CardHeader>
             <div className="flex items-center gap-2">
               <Trophy className="w-5 h-5 text-teal-500" />
-              <CardTitle className="text-base">Rapport de Diagnostic CréaScope</CardTitle>
+              <CardTitle className="text-base">Rapport de Diagnostic Echo Entreprendre</CardTitle>
             </div>
             <p className="text-sm text-gray-500 mt-1">Votre bilan complet avec la feuille de route à 6 mois.</p>
           </CardHeader>
           <CardContent>
             <div className="text-center py-12">
               <Trophy className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-              <p className="text-sm text-gray-500">Complétez les 5 étapes du parcours pour générer votre Rapport CréaScope.</p>
+              <p className="text-sm text-gray-500">Complétez les 5 étapes du parcours pour générer votre Rapport Echo Entreprendre.</p>
             </div>
           </CardContent>
         </Card>
@@ -1733,7 +1733,7 @@ export default function UserDashboard() {
       case 'outils': return <OutilsBPTab />
       case 'bilan-coherence': return <BilanCoherenceTab />
       case 'export-bp': return <ExportBPTab />
-      case 'rapport-creascope': return <RapportCreascopeTab />
+      case 'rapport-echo-entreprendre': return <RapportEchoEntreprendreTab />
       default: return <ProfilTab />
     }
   }

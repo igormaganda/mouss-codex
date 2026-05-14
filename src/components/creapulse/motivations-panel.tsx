@@ -168,7 +168,7 @@ export default function MotivationsPanel() {
               content: `En tant qu'expert en création d'entreprise, analyse ce profil de porteur de projet et donne des recommandations personnalisées en français:\n\nMOTIVATIONS:\n${motivationSummary}\n\nFREINS IDENTIFIÉS:\n${barrierSummary}\n\nScore d'alignement: ${alignmentScore}/100\n\nFournis une analyse structurée avec: 1) Forces motivationnelles, 2) Points de vigilance, 3) Recommandations d'accompagnement.`,
             },
           ],
-          context: { userName: 'Conseiller CréaScope', userRole: 'COUNSELOR' },
+          context: { userName: 'Conseiller Echo Entreprendre', userRole: 'COUNSELOR' },
         }),
       })
       const data = await res.json()

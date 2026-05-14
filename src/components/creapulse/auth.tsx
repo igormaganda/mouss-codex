@@ -142,7 +142,7 @@ export default function AuthPage() {
               <Zap className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-3xl font-bold mb-4">
-              Bienvenue sur CréaScope
+              Bienvenue sur Echo Entreprendre
             </h2>
             <p className="text-emerald-100 text-lg leading-relaxed">
               Votre plateforme de diagnostic entrepreneurial propulsée par l&apos;intelligence artificielle.
@@ -198,7 +198,7 @@ export default function AuthPage() {
               <Zap className="w-4 h-4 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-              CréaScope
+              Echo Entreprendre
             </span>
           </div>
 
@@ -208,7 +208,7 @@ export default function AuthPage() {
           <p className="text-gray-500 mb-8">
             {mode === 'login'
               ? 'Connectez-vous pour accéder à votre espace'
-              : 'Rejoignez CréaScope et lancez votre diagnostic'}
+              : 'Rejoignez Echo Entreprendre et lancez votre diagnostic'}
           </p>
 
           {/* Error message */}

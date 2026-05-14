@@ -87,7 +87,7 @@ const fallbackTestimonials = [
   {
     name: 'Sophie Martin',
     role: 'Créatrice de GreenTech Solutions',
-    text: "CréaScope m'a permis d'identifier les forces et les faiblesses de mon projet en seulement 2 heures. L'IA m'a surpris par la pertinence de ses conseils !",
+    text: "Echo Entreprendre m'a permis d'identifier les forces et les faiblesses de mon projet en seulement 2 heures. L'IA m'a surpris par la pertinence de ses conseils !",
     rating: 5,
   },
   {
@@ -180,7 +180,7 @@ export default function LandingPage() {
             <div className="flex items-center gap-2">
               <img src="/logo-gidef.svg" alt="GIDEF" className="h-8 w-auto" />
               <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                CréaScope
+                Echo Entreprendre
               </span>
             </div>
             <div className="hidden md:flex items-center gap-8">
@@ -248,7 +248,7 @@ export default function LandingPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              CréaScope combine intelligence artificielle et accompagnement humain pour
+              Echo Entreprendre combine intelligence artificielle et accompagnement humain pour
               vous guider à chaque étape de votre parcours de création d&apos;entreprise.
             </motion.p>
 
@@ -447,7 +447,7 @@ export default function LandingPage() {
               custom={1}
               className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4"
             >
-              Ils ont confiance en CréaScope
+              Ils ont confiance en Echo Entreprendre
             </motion.h2>
           </motion.div>
 
@@ -526,7 +526,7 @@ export default function LandingPage() {
             <div className="flex items-center gap-2">
               <img src="/logo-gidef.svg" alt="GIDEF" className="h-8 w-auto" />
               <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                CréaScope
+                Echo Entreprendre
               </span>
             </div>
             <div className="flex items-center gap-6 text-sm text-gray-500">
@@ -536,7 +536,7 @@ export default function LandingPage() {
               <span>Contact</span>
             </div>
             <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} CréaScope. Tous droits réservés.
+              © {new Date().getFullYear()} Echo Entreprendre. Tous droits réservés.
             </p>
           </div>
         </div>

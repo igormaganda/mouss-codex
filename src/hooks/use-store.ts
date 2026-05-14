@@ -27,7 +27,7 @@ export type UserTab =
   | 'notifications'
   | 'bilan-coherence'
   | 'export-bp'
-  | 'rapport-creascope'
+  | 'rapport-echo-entreprendre'
 export type CounselorTab =
   | 'entretien'
   | 'ai-copilote'

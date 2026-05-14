@@ -23,7 +23,7 @@ export default function SessionTimerGauge() {
   const [startedAt, setStartedAt] = useState<number | null>(null)
   const [now, setNow] = useState(() => Date.now())
 
-  const storageKey = `creascope-session-start:${currentRole}:${userId}`
+  const storageKey = `echo-entreprendre-session-start:${currentRole}:${userId}`
 
   useEffect(() => {
     const raw = localStorage.getItem(storageKey)

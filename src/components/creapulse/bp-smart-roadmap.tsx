@@ -267,7 +267,7 @@ export default function SmartRoadmapGenerator() {
 
     let text = ''
     text += '╔══════════════════════════════════════════════════════════╗\n'
-    text += '║           FEUILLE DE ROUTE SMART — CréaScope            ║\n'
+    text += '║           FEUILLE DE ROUTE SMART — Echo Entreprendre            ║\n'
     text += '╚══════════════════════════════════════════════════════════╝\n\n'
     text += `Projet  : ${roadmap.projectName}\n`
     text += `Secteur : ${roadmap.sector}\n`
@@ -299,7 +299,7 @@ export default function SmartRoadmapGenerator() {
       text += '\n────────────────────────────────────────────────────────────\n\n'
     })
 
-    text += `Généré par CréaScope — ${new Date().toLocaleDateString('fr-FR')}\n`
+    text += `Généré par Echo Entreprendre — ${new Date().toLocaleDateString('fr-FR')}\n`
 
     const blob = new Blob([text], { type: 'text/plain;charset=utf-8' })
     const url = URL.createObjectURL(blob)
@@ -720,7 +720,7 @@ export default function SmartRoadmapGenerator() {
                 </span>
               </div>
               <span className="text-xs">
-                Feuille de route générée par CréaScope — {new Date().toLocaleDateString('fr-FR')}
+                Feuille de route générée par Echo Entreprendre — {new Date().toLocaleDateString('fr-FR')}
               </span>
             </CardContent>
           </Card>

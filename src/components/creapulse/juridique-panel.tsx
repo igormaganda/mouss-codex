@@ -173,7 +173,7 @@ export default function JuridiquePanel() {
               content: `En tant qu'expert juridique en droit des affaires français, analyse ces 4 statuts juridiques et recommande le meilleur choix pour un porteur de projet qui débute son activité entrepreneuriale. Considère la simplicité, la protection sociale, la fiscalité et l'évolutivité.\n\n${comparison}\n\nDonne une recommandation structurée en français avec un tableau comparatif simplifié et un verdict clair.`,
             },
           ],
-          context: { userName: 'Conseiller CréaScope', userRole: 'COUNSELOR' },
+          context: { userName: 'Conseiller Echo Entreprendre', userRole: 'COUNSELOR' },
         }),
       })
       const data = await res.json()

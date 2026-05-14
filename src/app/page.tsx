@@ -47,7 +47,7 @@ function DashboardView() {
       <AccessibilityPanel />
       <footer className="border-t border-gray-200 bg-white/90 backdrop-blur px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-600">
         <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <p className="font-medium">BGE Bretagne · France Travail · CréaScope</p>
+          <p className="font-medium">BGE Bretagne · France Travail · Echo Entreprendre</p>
           <p>Accessibilité : accessibilite@bge-bretagne.com · Mentions légales</p>
         </div>
       </footer>
