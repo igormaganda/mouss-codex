@@ -18,11 +18,11 @@ export async function callAI(
   }
 ): Promise<string> {
   const zai = await getZAI();
-  const allMessages: { role: string; content: string }[] = [];
+  const allMessages: { role: 'system' | 'user' | 'assistant'; content: string }[] = [];
   if (options?.systemPrompt) {
     allMessages.push({ role: 'system', content: options.systemPrompt });
   }
-  allMessages.push(...messages);
+  allMessages.push(...messages as { role: 'user' | 'assistant'; content: string }[]);
   const completion = await zai.chat.completions.create({
     messages: allMessages,
     model: 'glm-4.7',
