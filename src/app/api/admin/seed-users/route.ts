@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const results = []
+    const results: Array<{ email: string; status: string; error?: string }> = []
 
     for (const user of testUsers) {
       try {
