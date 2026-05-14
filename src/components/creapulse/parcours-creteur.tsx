@@ -509,7 +509,6 @@ export default function ParcoursCreateur() {
         await fetch('/api/parcours-creteur/session', {
           headers: authHeaders(),
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(patch),
         })
       } catch {
@@ -647,7 +646,6 @@ export default function ParcoursCreateur() {
       const res = await fetch('/api/parcours-creteur/vision', {
         headers: authHeaders(),
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers: visionAnswers }),
       })
       if (res.ok) {
@@ -677,7 +675,6 @@ export default function ParcoursCreateur() {
       const res = await fetch('/api/parcours-creteur/vision', {
         headers: authHeaders(),
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers: { [currentQ.key]: currentAnswer } }),
       })
       if (res.ok) {
@@ -716,7 +713,6 @@ export default function ParcoursCreateur() {
         await fetch('/api/parcours-creteur/radar', {
           headers: authHeaders(),
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ skillId: currentCard.id, kept }),
         })
       } catch {
