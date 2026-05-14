@@ -8,7 +8,12 @@ const TOKEN_KEY = 'cp_token'
 
 export function getToken(): string | null {
   if (typeof window === 'undefined') return null
-  return localStorage.getItem(TOKEN_KEY)
+  const token = localStorage.getItem(TOKEN_KEY)
+  // Debug: log token presence (not the value itself for security)
+  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.log('[getToken] Token present:', !!token)
+  }
+  return token
 }
 
 export function setToken(token: string): void {
